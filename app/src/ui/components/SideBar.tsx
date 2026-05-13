@@ -9,7 +9,13 @@ import { FaGift } from "react-icons/fa";
 import { IoAlertCircleOutline } from "react-icons/io5";
 import React from "react";
 import { useState} from "react";
-export default function SideBar(){
+import { div } from "motion/react-m";
+
+interface SideBarProps {
+    isOpen : boolean;
+    setIsOpen : (isOpen : boolean) => void;
+}
+export default function SideBar({isOpen , setIsOpen} : SideBarProps){
     const links = [
         {icon : BsFillGrid1X2Fill , label : "Dashboard"},
         {icon : MdCall , label : "Call Insights"},
@@ -21,13 +27,12 @@ export default function SideBar(){
         {icon : PiBoxArrowUpDuotone , label : "Feedback History"},
         {icon : FaGift , label : "Feedback"}
     ]
-    const [isOpen , setIsOpen] = useState<boolean>(false);
-    return(
-        <div className = 'flex flex-col items-center justify-start gap-6 py-8 px-4 bg-color-background text-color-primary h-screen w-60 border-r-3 border-neutral-200 relative'>
-          <div className = 'w-60 h-10 flex items-center justify-start  border-b-2 border-neutral-200'>
+    const sidebarContent = (
+        <div className = 'flex flex-col items-center justify-start gap-6 py-8 px-4 bg-color-background text-color-primary h-screen w-60 md:border-r-3 border-neutral-200 relative flex-shrink-0'>
+            <div className = 'hidden w-60 h-10 md:flex items-center justify-start  border-b-2 border-neutral-200'>
              <h1 className = 'text-2xl tracking-wide font-semibold mb-8 ml-8'>Hintro</h1>
           </div>
-          <div className = 'w-60 h-140  border-b-2 border-neutral-200 flex flex-col items-start justify-start pl-4 gap-2'>
+          <div className = 'w-60 h-140 mt-10 md:mt-0 border-b-2 border-neutral-200 flex flex-col items-start justify-start pl-4 gap-2'>
              <div className = 'flex items-start justify-start gap-4 cursor-pointer group bg-secondary rounded-md p-2  w-55 transition-colors duration-200 ease-in-out'>
                 <BsFillGrid1X2Fill size={20} className = 'text-tertiary'/>
                 <span className = 'text-sm font-bold text-tertiary'>Dashboard</span>
@@ -64,5 +69,26 @@ export default function SideBar(){
              <button className = 'w-45 rounded-lg cursor-pointer h-10 bg-neutral-500 text-white mt-10'>Upgrade</button>
           </div>
         </div>
+    );
+      return(
+         <>
+         <div className='hidden md:flex h-screen'>
+           {sidebarContent}
+         </div>
+         {isOpen && (
+            <div className = 'fixed inset-0 z-50 md:hidden'>
+               <div className = 'absolute inset-0 bg-black/40' onClick = {() => setIsOpen(false)}/>
+               <div className='absolute top-0 left-0 h-full w-60 bg-white z-50'>
+            <button
+              className='absolute top-8 right-4 z-10'
+              onClick={() => setIsOpen(false)}
+            >
+              <RxCross1 size={20} />
+            </button>
+            {sidebarContent}
+          </div>
+            </div>
+         )}
+         </>
     )
 }
