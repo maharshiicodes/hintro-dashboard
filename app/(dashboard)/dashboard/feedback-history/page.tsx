@@ -46,7 +46,7 @@ export default function FeedbackHistoryPage() {
           </div>
         </td>
         <td className='px-6 py-4 text-sm text-gray-600 max-w-xs truncate'>
-          {feedback.text || '-'}
+          -{feedback.text || '-'}
         </td>
         <td className='px-6 py-4 text-sm text-gray-600'>{feedback.date}</td>
         <td className='px-6 py-4 text-sm text-gray-600'>{feedback.time}</td>
