@@ -8,7 +8,7 @@ import type { DashboardStats,CallSessionsResponse } from "@/app/src/lib/types";
 import RecentCalls from "@/app/src/ui/components/RecentCall";
 
 export default async  function Dashboard(){
-    let user = 'u2';
+    let user = 'u1';
     const data : DashboardStats = await mockServer('auth/dashboard', user);
     const callsData: CallSessionsResponse = await mockServer(
     'call-sessions?limit=Math.floor(Math.random() * 5)',

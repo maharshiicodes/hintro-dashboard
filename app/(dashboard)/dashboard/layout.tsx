@@ -4,6 +4,7 @@ import SideBar from '@/app/src/ui/components/SideBar'
 import TopBar from '@/app/src/ui/components/TopBar'
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/next';
 
 export default  function Home({children} : {children : React.ReactNode}) {
   const [isOpen , setIsOpen] = useState<boolean>(false);
@@ -17,7 +18,7 @@ export default  function Home({children} : {children : React.ReactNode}) {
 
   return (
     <div className='flex h-screen w-full overflow-hidden'>
-     
+      <Analytics />
       <SideBar isOpen = {isOpen} setIsOpen = {setIsOpen} />
       <div className='flex flex-col flex-1 min-w-0'>
         <TopBar setIsOpen = {setIsOpen} title = {getPageTitle()} />
