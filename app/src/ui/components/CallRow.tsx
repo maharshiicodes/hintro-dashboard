@@ -1,4 +1,5 @@
 import { MdMoreVert } from 'react-icons/md'
+import profile from '@/public/assests/profile.jpg'
 
 interface CallRowProps {
   clientName: string
@@ -22,8 +23,18 @@ export default function CallRow({
           </div>
         </div>
         <div className='flex-1 min-w-0'>
-          <h4 className='text-sm font-semibold text-gray-900'>{clientName}</h4>
-          <p className='text-xs text-gray-500'>{description}</p>
+          <h4 className='text-sm font-semibold text-gray-900'>{description}</h4>
+          <div className='relative flex items-center justify-start -space-x-2'>
+  <div className='relative w-6 h-6 rounded-full bg-gray-100 border-2 border-white'>
+    <img src={profile.src} alt="Profile" className='w-full h-full object-cover rounded-full' />
+  </div>
+  <div className='relative w-6 h-6 rounded-full bg-gray-100 border-2 border-white'>
+    <img src={profile.src} alt="Profile" className='w-full h-full object-cover rounded-full' />
+  </div>
+  <div className='relative w-6 h-6 rounded-full bg-gray-100 border-2 border-white'>
+    <img src={profile.src} alt="Profile" className='w-full h-full object-cover rounded-full' />
+  </div>
+</div>
         </div>
       </div>
       <div className='flex items-center gap-4 ml-4'>

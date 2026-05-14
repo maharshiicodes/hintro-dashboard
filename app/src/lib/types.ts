@@ -77,3 +77,11 @@ export interface CallSessionsResponse {
   callSessions: CallSession[]
   pagination: Pagination
 }
+
+export interface FeedbackEntry {
+  id: string
+  rating: number
+  text: string
+  date: string
+  time: string
+}
